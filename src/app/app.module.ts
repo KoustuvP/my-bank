@@ -11,6 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockInterceptor } from './shared/services/mock.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { MockInterceptor } from './shared/services/mock.interceptor';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
+    SharedModule,
   ],
   declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent],

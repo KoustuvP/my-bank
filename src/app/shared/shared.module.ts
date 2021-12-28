@@ -22,11 +22,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
 //import { PropertyToWordPipe, UnknownToStringPipe } from './pipes/property-to-word.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    // HeaderComponent,
-    // FooterComponent,
+    HeaderComponent,
+    FooterComponent,
     // WarningModalComponent,
     // ClickOutsideDirective,
     // LoaderComponent,
@@ -51,8 +53,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   ],
   exports: [
     CommonModule,
-    // HeaderComponent,
-    // FooterComponent,
+    HeaderComponent,
+    FooterComponent,
     MatCardModule,
     MatButtonModule,
     // WarningModalComponent,
