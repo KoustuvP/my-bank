@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthService } from './shared/services/auth.service';
 import { HelloComponent } from './hello.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MockInterceptor } from './shared/services/mock.interceptor';
 
 @NgModule({
   imports: [
@@ -22,6 +23,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MockInterceptor,
+      //useClass: environment.mock ? MockInterceptor : null,
+      multi: true,
+    },
+  ],
 })
 export class AppModule {}
