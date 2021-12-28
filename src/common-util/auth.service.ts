@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { environment } from '../environments/environment';
+//import { environment } from '../environments/environment';
 import { CurrentUser } from './models/CurrentUser';
 
 @Injectable()
@@ -19,13 +19,13 @@ export class AuthService {
     new BehaviorSubject(this.currentUser);
 
   constructor(private http: HttpClient, private router: Router) {
-    this.urlEndpoint = environment.apiEndpoint;
+    this.urlEndpoint = 'api';
     this.isLoggedin = new BehaviorSubject<boolean>(false);
   }
 
   authenticate(data: any) {
     this.subscription = this.http
-      .post(`${environment.endpoint}/authenticate`, data)
+      .post(`${this.urlEndpoint}/authenticate`, data)
       .pipe(
         map((res) => {
           this.setCurrentUser(res);
@@ -63,7 +63,7 @@ export class AuthService {
 
   register(userData: any): any {
     return this.http
-      .post(environment.endpoint + '/user-api/users/register', userData)
+      .post(this.urlEndpoint + '/user-api/users/register', userData)
       .pipe(
         map((res) => {
           // this.notificationService.setmessage("User has been successfully registered");
