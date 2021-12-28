@@ -8,12 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   // { path: 'about', component: AboutComponent, canActivate:[AuthGuard] },
-  // {
-  //   path: 'home',
-  //   loadChildren: () =>
-  //     import('./home/home.module').then((m) => m.HomeModule),
-  //     canActivate:[AuthGuard]
-  // },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
   {
     path: 'login',
     loadChildren: () =>
