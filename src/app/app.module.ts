@@ -9,16 +9,18 @@ import { AuthService } from '../common-util/auth.service';
 import { HelloComponent } from './hello.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
   ],
-  declarations: [],
+  declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent],
   providers: [AuthService],
 })
