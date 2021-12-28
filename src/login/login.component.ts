@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../common-util/auth.service';
+import { CustomErrorStateMatcher } from '../common-util/models/error-matcher';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: any;
   emailFormControl: FormControl;
   passwordFormControl: FormControl;
+  matcher = new CustomErrorStateMatcher();
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
