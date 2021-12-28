@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 //import { environment } from '../environments/environment';
-import { CurrentUser } from './models/CurrentUser';
+import { CurrentUser } from '../models/CurrentUser';
 
 @Injectable()
 export class AuthService {

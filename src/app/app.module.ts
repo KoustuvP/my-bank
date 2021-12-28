@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../shared/services/auth.service';
 import { HelloComponent } from './hello.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
