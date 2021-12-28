@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
-import { LoginRoutingModule } from './login-routing.module';
+import { LoginComponent } from '../login/login.component';
+import { LoginRoutingModule } from '../login/login-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
