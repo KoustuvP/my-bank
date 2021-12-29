@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReviewComponent } from '../../review/review.component';
 import { AcknowledgmentComponent } from './acknowledgment/acknowledgment.component';
 import { HowToApplyComponent } from './how-to-apply/how-to-apply.component';
 import { MortgageOptionsComponent } from './mortgage-options/mortgage-options.component';
 import { MortgageComponent } from './mortgage.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
+import { ReviewComponent } from './review/review.component';
 import { SolicitorComponent } from './solicitor/solicitor.component';
 import { ValuationsComponent } from './valuations/valuations.component';
 const routes: Routes = [
