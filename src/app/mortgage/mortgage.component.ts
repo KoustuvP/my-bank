@@ -12,15 +12,16 @@ export class MortgageComponent implements OnInit {
     { name: 'Mortgage Options', path: 'mortgage-options' },
     { name: 'Confirm Mortgage', path: 'mortgage-confirmation' },
     { name: 'Property Details', path: 'property-details' },
-    { name: 'Validations', path: 'validations' },
-    { name: 'Solicitors', path: 'solicitor' },
+    { name: 'Valuations', path: 'valudations' },
+    { name: 'Solicitor', path: 'solicitor' },
     { name: 'Payment Details', path: 'payment-details' },
     { name: 'Review And Submit', path: 'review-submit' },
   ];
   isOpened: boolean = false;
 
-  constructor(private router: Router) //  private loaderService: LoaderService,
-  //  private mortgageService: MortgageService
+  constructor(
+    private router: Router //  private loaderService: LoaderService,
+  ) //  private mortgageService: MortgageService
   {}
 
   ngOnInit(): void {

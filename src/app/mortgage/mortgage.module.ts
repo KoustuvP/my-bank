@@ -6,7 +6,10 @@ import { HowToApplyComponent } from './how-to-apply/how-to-apply.component';
 import { MortgageOptionsComponent } from './mortgage-options/mortgage-options.component';
 import { MortgageRoutingModule } from './mortgage-routing.module';
 import { MortgageComponent } from './mortgage.component';
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
+import { SolicitorComponent } from './solicitor/solicitor.component';
+import { ValuationsComponent } from './valuations/valuations.component';
 
 @NgModule({
   imports: [SharedModule, MortgageRoutingModule],
@@ -16,6 +19,9 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
     MortgageOptionsComponent,
     PropertyDetailsComponent,
     AcknowledgmentComponent,
+    ValuationsComponent,
+    SolicitorComponent,
+    PaymentDetailsComponent
   ],
 })
 export class MortgageModule {}
