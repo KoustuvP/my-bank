@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+// import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-offerings',
@@ -7,7 +7,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./offerings.component.css'],
 })
 export class OfferingsComponent implements OnInit {
-  customOptions: OwlOptions = {
+  customOptions: any = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
