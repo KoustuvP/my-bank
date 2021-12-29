@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ReviewComponent } from '../../review/review.component';
 import { AcknowledgmentComponent } from './acknowledgment/acknowledgment.component';
 import { HowToApplyComponent } from './how-to-apply/how-to-apply.component';
 import { MortgageOptionsComponent } from './mortgage-options/mortgage-options.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'valuations', component: ValuationsComponent },
   { path: 'solicitor', component: SolicitorComponent },
   { path: 'payment-details', component: PaymentDetailsComponent },
+  { path: 'review', component: ReviewComponent },
 ];
 
 @NgModule({

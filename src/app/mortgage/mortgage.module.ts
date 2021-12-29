@@ -8,6 +8,7 @@ import { MortgageRoutingModule } from './mortgage-routing.module';
 import { MortgageComponent } from './mortgage.component';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
+import { ReviewComponent } from './review/review.component';
 import { SolicitorComponent } from './solicitor/solicitor.component';
 import { ValuationsComponent } from './valuations/valuations.component';
 
@@ -21,7 +22,8 @@ import { ValuationsComponent } from './valuations/valuations.component';
     AcknowledgmentComponent,
     ValuationsComponent,
     SolicitorComponent,
-    PaymentDetailsComponent
+    PaymentDetailsComponent,
+    ReviewComponent
   ],
 })
 export class MortgageModule {}
