@@ -4,13 +4,10 @@ import { OfferingsComponent } from './components/offerings/offerings.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { HomeComponent } from './home.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    SharedModule,
-    HomeRoutingModule,
-    BrowserAnimationsModule,
-  ],
+  declarations: [HomeComponent, OfferingsComponent],
+  imports: [SharedModule, HomeRoutingModule, CarouselModule],
 })
 export class HomeModule {}
