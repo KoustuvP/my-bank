@@ -9,7 +9,13 @@ import { MortgageComponent } from './mortgage.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 
 @NgModule({
-  imports: [SharedModule, MortgageRoutingModule, ],
-  declarations: [MortgageComponent, HowToApplyComponent, MortgageOptionsComponent,PropertyDetailsComponent, AcknowledgmentComponent],
+  imports: [SharedModule, MortgageRoutingModule],
+  declarations: [
+    MortgageComponent,
+    HowToApplyComponent,
+    MortgageOptionsComponent,
+    PropertyDetailsComponent,
+    AcknowledgmentComponent,
+  ],
 })
 export class MortgageModule {}
