@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'how-to-apply', pathMatch: 'full' },
   { path: 'how-to-apply', component: HowToApplyComponent },
   { path: 'mortgage-options', component: MortgageOptionsComponent },
+  { path: 'confirm-mortgage', component: PropertyDetailsComponent },
   { path: 'property-details', component: PropertyDetailsComponent },
 ];
 
