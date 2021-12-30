@@ -47,6 +47,11 @@ export class AuthService {
     this.token = user?.jwt;
   }
 
+  getCurrentUser = () => this.currentUser;
+  getCurrentUserSubscription = (): Observable<CurrentUser> => {
+    return this.currentUserSubject.asObservable();
+  };
+
   removeUser() {
     this.isLoggedin.next(false);
     this.setCurrentUser({ firstName: '', lastName: '', userId: '' });

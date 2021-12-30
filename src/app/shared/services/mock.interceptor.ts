@@ -32,18 +32,20 @@ export class MockInterceptor implements HttpInterceptor {
       return of(
         new HttpResponse({
           status: 200,
-          body: {
-            userId: 75,
-            propertyId: 36,
-            propertyAddress: 'India',
-            propertyType: 'Flat',
-            numberOfBedrooms: 3,
-            propertyBuilt: 'After 1980',
-            propertyAge: 10,
-            isPropertyCovered: 'Yes',
-            tenureType: 'Freehold',
-            postCode: '712617',
-          },
+          body: [
+            {
+              userId: 75,
+              propertyId: 36,
+              propertyAddress: 'India',
+              propertyType: 'Flat',
+              numberOfBedrooms: 3,
+              propertyBuilt: 'After 1980',
+              propertyAge: 10,
+              isPropertyCovered: 'Yes',
+              tenureType: 'Freehold',
+              postCode: '712617',
+            },
+          ],
         })
       );
     } else

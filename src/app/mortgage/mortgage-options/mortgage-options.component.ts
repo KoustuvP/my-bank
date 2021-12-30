@@ -19,7 +19,7 @@ export class MortgageOptionsComponent implements OnInit {
   constructor(private router:Router) { 
   }
 
-  onSaveAndContinue=()=>this.router.navigateByUrl('/home/mortgage-confirmation')
+  onSaveAndContinue=()=>this.router.navigateByUrl('/mortgage/mortgage-confirmation')
 
   ngOnInit(): void {
     this.options=Object.keys(this.data[0])

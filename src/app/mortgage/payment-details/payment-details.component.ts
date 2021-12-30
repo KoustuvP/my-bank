@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
+import { MortgageService } from '../services/mortgage.service';
 
 @Component({
   selector: 'app-payment-details',
@@ -22,7 +23,7 @@ export class PaymentDetailsComponent implements OnInit {
   private isPaymentSaved: boolean = false;
   // matcher = new MyErrorStateMatcher();
   constructor(
-   // private mortgageService: MortgageService, 
+    private mortgageService: MortgageService, 
     private authService: AuthService, private router:Router) {
     this.sortCode = new FormControl('', [Validators.required]);
     this.accountNumber = new FormControl('', [Validators.required]);
@@ -49,33 +50,33 @@ export class PaymentDetailsComponent implements OnInit {
   };
   setDayOfPayment = (day: number) => this.dayOfPayment.setValue(day);
   onSaveAndContinue() {
-    // this.userId.setValue(this.authService.getCurrentUser()?.userId);
-    // this.PaymentForm.removeControl('currentcircumstances');
-    // if(!this.PaymentForm.contains('currentCircumstances'))this.PaymentForm.addControl('currentCircumstances',this.currentCircumstances);
-    // if (this.PaymentForm.contains('paymentId'))
-    //   this.PaymentForm.removeControl('paymentId')
-    // if (!this.isPaymentSaved)
-    //   this.mortgageService.savePaymentDetails(this.PaymentForm.value).subscribe(data=>{
-    //     this.router.navigateByUrl('/home/review-submit')
-    //   });
-    // else {
-    //   this.mortgageService.updatePaymentDetails(this.PaymentForm.value).subscribe(data=>{
-    //     this.router.navigateByUrl('/home/review-submit')
-    //   });
-    // }
+    this.userId.setValue(this.authService.getCurrentUser()?.userId);
+    this.PaymentForm.removeControl('currentcircumstances');
+    if(!this.PaymentForm.contains('currentCircumstances'))this.PaymentForm.addControl('currentCircumstances',this.currentCircumstances);
+    if (this.PaymentForm.contains('paymentId'))
+      this.PaymentForm.removeControl('paymentId')
+    if (!this.isPaymentSaved)
+      this.mortgageService.savePaymentDetails(this.PaymentForm.value).subscribe(data=>{
+        this.router.navigateByUrl('/mortgage/review-submit')
+      });
+    else {
+      this.mortgageService.updatePaymentDetails(this.PaymentForm.value).subscribe(data=>{
+        this.router.navigateByUrl('/mortgage/review-submit')
+      });
+    }
     
   }
   ngOnInit(): void {
-    // this.userId.setValue(this.authService.getCurrentUser()?.userId);
+    this.userId.setValue(this.authService.getCurrentUser()?.userId);
 
-    // this.mortgageService.getPaymentDetails().subscribe(res => {
-    //   if (res) {
-    //     this.PaymentForm.addControl('paymentId', this.paymentId);
-    //     this.currentCircumstances.setValue(res.currentcircumstances);
-    //     this.PaymentForm.patchValue(res);
-    //     this.isPaymentSaved = true
-    //   }
-    // })
+    this.mortgageService.getPaymentDetails().subscribe(res => {
+      if (res) {
+        this.PaymentForm.addControl('paymentId', this.paymentId);
+        this.currentCircumstances.setValue(res.currentcircumstances);
+        this.PaymentForm.patchValue(res);
+        this.isPaymentSaved = true
+      }
+    })
   }
 
 }
