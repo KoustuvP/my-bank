@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 // import { AboutComponent } from './about/about.component';
 // import { AuthGuard } from './auth.guard';
 // import { HomeComponent } from './home/home.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
     path: 'mortgage',
     loadChildren: () =>
       import('./mortgage/mortgage.module').then((m) => m.MortgageModule),
+    canActivate: [AuthGuard]
   },
   // {
   //   path: 'register',
