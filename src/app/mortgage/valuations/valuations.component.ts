@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { AuthService } from '../../shared/services/auth.service';
+import { MortgageService } from '../services/mortgage.service';
 
 @Component({
   selector: 'app-valuations',
@@ -19,7 +21,7 @@ export class ValuationsComponent implements OnInit {
   valuationForm: FormGroup;
   hasDetailsSavedEarlier: boolean = false;
   constructor(
-    //  private mortgageService: MortgageService,
+    private mortgageService: MortgageService,
     private authService: AuthService,
     private router: Router
   ) {
@@ -41,25 +43,25 @@ export class ValuationsComponent implements OnInit {
   setLocationScotland = (isScotland: number) =>
     this.isPropertyInScotland.setValue(isScotland);
   onSaveAndContinue() {
-    // if(!this.hasDetailsSavedEarlier)
-    // this.mortgageService.saveValuation(this.valuationForm.value).subscribe(
-    //   res=>this.router.navigateByUrl('/home/solicitor')
-    // );
+    if(!this.hasDetailsSavedEarlier)
+    this.mortgageService.saveValuation(this.valuationForm.value).subscribe(
+      res=>this.router.navigateByUrl('/mortgage/solicitor')
+    );
   }
 
   ngOnInit(): void {
-    // this.userId.setValue(this.authService.getCurrentUser()?.userId)
-    // if(!this.mortgageService.startFresh)
-    // this.mortgageService.getValuation().pipe(map(res=>res.pop())).subscribe(res => {
-    //   if (res) {
-    //     this.hasDetailsSavedEarlier = true;
-    //     //let resData: any = { ...res, propertyId: '' };
-    //     //this.valuationForm.addControl('valuationId', this.valuationId);
-    //     // delete resData.propertyId;
-    //     this.valuationForm.setValue(res);
-    //     this.hasDetailsSavedEarlier=true;
-    //     //this.loaderService.changeLoadingState(false);
-    //   }
-    // })
+    this.userId.setValue(this.authService.getCurrentUser()?.userId)
+    if(!this.mortgageService.startFresh)
+    this.mortgageService.getValuation().pipe(map(res=>res.pop())).subscribe(res => {
+      if (res) {
+        this.hasDetailsSavedEarlier = true;
+        //let resData: any = { ...res, propertyId: '' };
+        //this.valuationForm.addControl('valuationId', this.valuationId);
+        // delete resData.propertyId;
+        this.valuationForm.setValue(res);
+        this.hasDetailsSavedEarlier=true;
+        //this.loaderService.changeLoadingState(false);
+      }
+    })
   }
 }

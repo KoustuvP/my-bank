@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MortgageService } from '../services/mortgage.service';
 
 @Component({
   selector: 'app-solicitor',
@@ -15,7 +16,7 @@ export class SolicitorComponent implements OnInit {
   santanderPanel: FormControl;
   withoutSolicitor: FormControl
   constructor(private router: Router, 
-    // private mortgageService:MortgageService
+    private mortgageService:MortgageService
     ) { 
     this.otherOccupant=new FormControl('',[Validators.required])
     this.santanderPanel=new FormControl('',[Validators.required])
@@ -42,11 +43,11 @@ export class SolicitorComponent implements OnInit {
   }
 
   onSaveAndContinue(){
-    // this.mortgageService.setSolicitorDetails(this.otherOccupantForm.value,this.solicitorForm.value)
-    this.router.navigateByUrl('/home/payment-details')
+    this.mortgageService.setSolicitorDetails(this.otherOccupantForm.value,this.solicitorForm.value)
+    this.router.navigateByUrl('/mortgage/payment-details')
   }
   ngOnInit(): void {
-    // this.otherOccupantForm.setValue(this.mortgageService.getOtherOccupant())
-    // this.solicitorForm.setValue(this.mortgageService.getSolicitor())
+    this.otherOccupantForm.setValue(this.mortgageService.getOtherOccupant())
+    this.solicitorForm.setValue(this.mortgageService.getSolicitor())
   }
 }
