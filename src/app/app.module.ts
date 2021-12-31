@@ -24,8 +24,8 @@ import { MomentModule } from 'angular2-moment';
     AppRoutingModule,
     RouterModule,
     SharedModule,
+    NgIdleKeepaliveModule.forRoot(),
     MomentModule,
-    NgIdleKeepaliveModule.forRoot()
   ],
   declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent],
