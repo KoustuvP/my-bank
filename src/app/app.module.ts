@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockInterceptor } from './shared/services/mock.interceptor';
 import { SharedModule } from './shared/shared.module';
-//import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
 
 @NgModule({
