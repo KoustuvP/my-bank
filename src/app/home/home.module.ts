@@ -8,6 +8,6 @@ import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [HomeComponent, OfferingsComponent],
-  imports: [SharedModule, HomeRoutingModule, CarouselModule],
+  imports: [SharedModule, HomeRoutingModule, CarouselModule, IvyCarouselModule],
 })
 export class HomeModule {}
