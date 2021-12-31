@@ -32,7 +32,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ngcc"
-
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.4",

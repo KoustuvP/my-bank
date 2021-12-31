@@ -4,8 +4,8 @@ import { CurrentUser } from './shared/models/CurrentUser';
 import { AuthService } from './shared/services/auth.service';
 import { LoaderService } from './shared/services/loader.service';
 import { NotificationService } from './shared/services/notification.service';
-import { Idle, DEFAULT_INTERRUPTSOURCES, createDefaultInterruptSources } from '@ng-idle/core';
-import { Keepalive } from '@ng-idle/keepalive';
+// import { Idle, DEFAULT_INTERRUPTSOURCES, createDefaultInterruptSources } from '@ng-idle/core';
+// import { Keepalive } from '@ng-idle/keepalive';
 
 @Component({
   selector: 'my-app',
@@ -28,8 +28,8 @@ export class AppComponent {
   userName='';
 
   constructor(
-    private idle: Idle,
-    private keepalive: Keepalive,
+    // private idle: Idle,
+    // private keepalive: Keepalive,
     private router: Router,
     private authService: AuthService,
     public notificationService: NotificationService,
@@ -38,21 +38,21 @@ export class AppComponent {
   ) {
 
     this.authService.getCurrentUserSubscription().subscribe((user:CurrentUser)=>this.userName=user.firstName?user.firstName+" "+user.lastName:'')
-    idle.setIdle(15);
-    idle.setTimeout(15);
-    idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
-    keepalive.interval(15);
-    this.reset();
+    // idle.setIdle(15);
+    // idle.setTimeout(15);
+    // idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
+    // keepalive.interval(15);
+    // this.reset();
   }
   // ngAfterContentInit(): void {
   //   this.userName=this.authService.getCurrentUser()?.firstName+" "+this.authService.getCurrentUser()?.lastName
   // }
   ngOnDestroy(): void {
-    this.idleEndSubscription.unsubscribe();
-    this.idleStartSubscription.unsubscribe();
-    this.timeoutSubscription.unsubscribe();
-    this.timeoutWarningSubscription.unsubscribe();
-    this.keepaliveSubscription.unsubscribe();
+    // this.idleEndSubscription.unsubscribe();
+    // this.idleStartSubscription.unsubscribe();
+    // this.timeoutSubscription.unsubscribe();
+    // this.timeoutWarningSubscription.unsubscribe();
+    // this.keepaliveSubscription.unsubscribe();
     this.routerSubscription.unsubscribe();
 
   }
@@ -70,55 +70,55 @@ export class AppComponent {
         
     //   }
     // })
-    this.idleEndSubscription = this.idle.onIdleEnd.subscribe(() => {
-      // this.idleState = 'No longer idle.'
-      // this.idle.watch(false)
-      // if(this.showTimeOut)
-      // this.idle.clearInterrupts()
-    });
+    // this.idleEndSubscription = this.idle.onIdleEnd.subscribe(() => {
+    //   // this.idleState = 'No longer idle.'
+    //   // this.idle.watch(false)
+    //   // if(this.showTimeOut)
+    //   // this.idle.clearInterrupts()
+    // });
 
-    this.timeoutSubscription = this.idle.onTimeout.subscribe(() => {
-      this.idleState = 'Timed out!';
-      this.timedOut = true;
-      this.showTimeOut = false;
-      this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
-      this.authService.removeUser();
-    });
+    // this.timeoutSubscription = this.idle.onTimeout.subscribe(() => {
+    //   this.idleState = 'Timed out!';
+    //   this.timedOut = true;
+    //   this.showTimeOut = false;
+    //   this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
+    //   this.authService.removeUser();
+    // });
 
-    this.idleStartSubscription = this.idle.onIdleStart.subscribe(() => {
-      this.idleState = 'You\'ve gone idle!'
-      this.showTimeOut = true;
-    });
+    // this.idleStartSubscription = this.idle.onIdleStart.subscribe(() => {
+    //   this.idleState = 'You\'ve gone idle!'
+    //   this.showTimeOut = true;
+    // });
 
-    this.timeoutWarningSubscription = this.idle.onTimeoutWarning.subscribe((countdown) => {
-      if (this.showTimeOut)
-        this.idle.clearInterrupts();
-    });
-    this.keepaliveSubscription = this.keepalive.onPing.subscribe(() => this.lastPing = new Date());
-    this.routerSubscription = this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        (event.url == '/login') ? this.idle.stop() : this.idle.watch()
-      }
-    })
+    // this.timeoutWarningSubscription = this.idle.onTimeoutWarning.subscribe((countdown) => {
+    //   if (this.showTimeOut)
+    //     this.idle.clearInterrupts();
+    // });
+    // this.keepaliveSubscription = this.keepalive.onPing.subscribe(() => this.lastPing = new Date());
+    // this.routerSubscription = this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     (event.url == '/login') ? this.idle.stop() : this.idle.watch()
+    //   }
+    // })
 
   }
 
   reset() {
-    this.idle.watch();
-    this.idleState = 'Started.';
-    this.timedOut = false;
-    this.showTimeOut = false;
+    // this.idle.watch();
+    // this.idleState = 'Started.';
+    // this.timedOut = false;
+    // this.showTimeOut = false;
   }
 
   onContinue() {
-    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
-    this.reset();
+    // this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
+    // this.reset();
   }
 
   onLoggingOut() {
-    this.idle.stop();
-    this.showTimeOut = false;
-    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
+    // this.idle.stop();
+    // this.showTimeOut = false;
+    // this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
     this.authService.removeUser();
   }
 }
