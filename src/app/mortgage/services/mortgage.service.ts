@@ -9,9 +9,7 @@ import { NotificationService } from '../../shared/services/notification.service'
 import { PaymentDetailsGetRes } from '../models/payment-details-get-response';
 import { ValuationGetRes } from '../models/valuation-get-response';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class MortgageService {
   //currentUser:CurrentUser;
   environment = { endpoint: 'api' };

@@ -9,9 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { MortgageService } from './services/mortgage.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class MortgageGuard implements CanActivateChild {
   prevUrl: string = '';
   isAllowed: boolean = false;

@@ -53,7 +53,7 @@ export class AppComponent {
     // this.timeoutSubscription.unsubscribe();
     // this.timeoutWarningSubscription.unsubscribe();
     // this.keepaliveSubscription.unsubscribe();
-    this.routerSubscription.unsubscribe();
+    // this.routerSubscription.unsubscribe();
 
   }
   ngOnInit(): void {

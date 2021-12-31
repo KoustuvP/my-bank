@@ -7,9 +7,11 @@ import { HowToApplyComponent } from './how-to-apply/how-to-apply.component';
 import { MortgageOptionsComponent } from './mortgage-options/mortgage-options.component';
 import { MortgageRoutingModule } from './mortgage-routing.module';
 import { MortgageComponent } from './mortgage.component';
+import { MortgageGuard } from './mortgage.guard';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { ReviewComponent } from './review/review.component';
+import { MortgageService } from './services/mortgage.service';
 import { SolicitorComponent } from './solicitor/solicitor.component';
 import { ValuationsComponent } from './valuations/valuations.component';
 
@@ -25,7 +27,8 @@ import { ValuationsComponent } from './valuations/valuations.component';
     SolicitorComponent,
     PaymentDetailsComponent,
     ReviewComponent,
-    NoticeComponent
+    NoticeComponent,
   ],
+  providers: [MortgageService, MortgageGuard],
 })
 export class MortgageModule {}
