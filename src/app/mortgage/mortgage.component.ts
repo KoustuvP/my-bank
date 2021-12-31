@@ -13,12 +13,12 @@ export class MortgageComponent implements OnInit {
   routerLinks = [
     { name: 'How to Apply', path: 'how-to-apply' },
     { name: 'Mortgage Options', path: 'mortgage-options' },
-    { name: 'Confirm Mortgage', path: 'mortgage-confirmation' },
+    { name: 'Confirm Mortgage', path: 'confirm-mortgage' },
     { name: 'Property Details', path: 'property-details' },
-    { name: 'Valuations', path: 'valudations' },
+    { name: 'Valuations', path: 'valuations' },
     { name: 'Solicitor', path: 'solicitor' },
     { name: 'Payment Details', path: 'payment-details' },
-    { name: 'Review And Submit', path: 'review-submit' },
+    { name: 'Review And Submit', path: 'review'},
   ];
   isOpened: boolean = false;
 

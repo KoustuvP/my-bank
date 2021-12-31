@@ -24,6 +24,9 @@ export class MockInterceptor implements HttpInterceptor {
         new HttpResponse({
           status: 200,
           body: {
+            firstName: 'Koustuv',
+            lastName: 'Mukherjee',
+            userId: '1010',
             role: 'admin',
           },
         })
