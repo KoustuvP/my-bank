@@ -4,6 +4,8 @@ import { CurrentUser } from './shared/models/CurrentUser';
 import { AuthService } from './shared/services/auth.service';
 import { LoaderService } from './shared/services/loader.service';
 import { NotificationService } from './shared/services/notification.service';
+import { Idle, DEFAULT_INTERRUPTSOURCES, createDefaultInterruptSources } from '@ng-idle/core';
+import { Keepalive } from '@ng-idle/keepalive';
 
 @Component({
   selector: 'my-app',
@@ -119,8 +121,4 @@ export class AppComponent {
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES)
     this.authService.removeUser();
   }
-}
-
-function DEFAULT_INTERRUPTSOURCES(DEFAULT_INTERRUPTSOURCES: any) {
-throw new Error('Function not implemented.');
 }
