@@ -24,6 +24,7 @@ import { ClickOutsideDirective } from './click-outside.directive';
 import { WarningModalComponent } from './components/warning-modal/warning-modal.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { CaraouselModule } from '../caraousel/caraousel.module';
 
 @NgModule({
   declarations: [
