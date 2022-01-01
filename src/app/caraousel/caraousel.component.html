@@ -3,7 +3,7 @@
     <img
       *ngFor="let slide of slides"
       class="carousel__photo {{ slide.class }}"
-      src="assets/img_2.jpg"
+      [src]="slide.path"
     />
 
     <div class="carousel__button--next">
