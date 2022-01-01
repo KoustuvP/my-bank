@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-caraousel',
@@ -11,12 +11,16 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   totalItems;
   slide = 0;
   moving = true;
-  constructor() {}
+  constructor(private elementRef: ElementRef) {
+    console.log(this.elementRef);
+  }
 
   setInitialClasses() {
     // Targets the previous, current, and next items
     // This assumes there are at least three items.
+    this.itemClassName = 'carousel__photo';
     this.items = document.getElementsByClassName('itemClassName');
+    console.log(this.items);
     this.totalItems = this.items.length;
     this.items[this.totalItems - 1].classList.add('prev');
     this.items[0].classList.add('active');
