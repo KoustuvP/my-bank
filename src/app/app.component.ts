@@ -7,7 +7,7 @@ import { NotificationService } from './shared/services/notification.service';
 // import { Idle, DEFAULT_INTERRUPTSOURCES, createDefaultInterruptSources } from '@ng-idle/core';
 // import { Keepalive } from '@ng-idle/keepalive';
 
-@Component({ 
+@Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
@@ -25,7 +25,7 @@ export class AppComponent {
   keepaliveSubscription: any;
   routerSubscription: any;
   isLoading = false;
-  userName='';
+  userName = '';
 
   constructor(
     // private idle: Idle,
@@ -36,8 +36,14 @@ export class AppComponent {
     private loaderService: LoaderService,
     private ref: ChangeDetectorRef
   ) {
-
-    this.authService.getCurrentUserSubscription().subscribe((user:CurrentUser)=>this.userName=user.firstName?user.firstName+" "+user.lastName:'')
+    this.authService
+      .getCurrentUserSubscription()
+      .subscribe(
+        (user: CurrentUser) =>
+          (this.userName = user.firstName
+            ? user.firstName + ' ' + user.lastName
+            : '')
+      );
     // idle.setIdle(15);
     // idle.setTimeout(15);
     // idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
@@ -54,20 +60,21 @@ export class AppComponent {
     // this.timeoutWarningSubscription.unsubscribe();
     // this.keepaliveSubscription.unsubscribe();
     // this.routerSubscription.unsubscribe();
-
   }
   ngOnInit(): void {
-    this.loaderService.getLoadingState().subscribe((data: boolean) => this.isLoading = data);
-   
+    this.loaderService
+      .getLoadingState()
+      .subscribe((data: boolean) => (this.isLoading = data));
+
     // this.router.events.subscribe(event => {
-      
+
     //   if (event instanceof NavigationStart)
     //     this.loaderService.changeLoadingState(true)
     //   if (event instanceof NavigationEnd)
     //     this.loaderService.changeLoadingState(false)
     //   if (event instanceof NavigationCancel){
     //     this.loaderService.changeLoadingState(false);
-        
+
     //   }
     // })
     // this.idleEndSubscription = this.idle.onIdleEnd.subscribe(() => {
@@ -100,7 +107,6 @@ export class AppComponent {
     //     (event.url == '/login') ? this.idle.stop() : this.idle.watch()
     //   }
     // })
-
   }
 
   reset() {

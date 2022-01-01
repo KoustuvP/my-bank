@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import {Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-caraousel',
@@ -11,8 +13,9 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   totalItems;
   slide = 0;
   moving = true;
-  constructor(private elementRef: ElementRef) {
-    console.log(this.elementRef);
+  constructor(private elementRef: ElementRef,@Inject(DOCUMENT) private _document: HTMLDocument) {
+    console.log( this.elementRef.nativeElement.querySelectorAll('.carousel__photo'));
+    console.log(this._document.querySelector('.carousel'));
   }
 
   setInitialClasses() {
