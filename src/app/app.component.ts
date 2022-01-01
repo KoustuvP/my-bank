@@ -15,7 +15,7 @@ import { NotificationService } from './shared/services/notification.service';
 export class AppComponent {
   title = 'santander-angular';
   idleState = 'Not started.';
-  showTimeOut = false;
+  showTimeOut = false; 
   timedOut = false;
   lastPing?: Date;
   idleEndSubscription: any;

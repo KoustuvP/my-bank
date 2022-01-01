@@ -1,25 +1,27 @@
 <div class="carousel-wrapper">
   <div class="carousel" caraousel-config>
-    <img class="carousel__photo initial" src="assets/img_1.jpg" />
-    <img class="carousel__photo" src="assets/img_2.jpg" />
-    <img class="carousel__photo" src="assets/img_3.jpg" />
-    <img class="carousel__photo" src="assets/img_4.jpg" />
-    <img class="carousel__photo" src="assets/img_5.jpg" />
+    <img
+      *ngFor="let slide of slides"
+      class="carousel__photo {{ slide.class }}"
+      src="assets/img_2.jpg"
+    />
 
     <div class="carousel__button--next">
       <button
         mat-mini-fab
         color="warn"
         aria-label="Example icon button with a filter list icon"
+        (click)="movePrev()"
       >
         <mat-icon>filter_list</mat-icon>
       </button>
     </div>
     <div class="carousel__button--prev">
-    <button
+      <button
         mat-mini-fab
         color="warn"
         aria-label="Example icon button with a filter list icon"
+        (click)="moveNext()"
       >
         <mat-icon>filter_list</mat-icon>
       </button>

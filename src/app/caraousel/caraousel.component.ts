@@ -13,6 +13,33 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   totalItems;
   slide = 0;
   moving = true;
+  slides = [
+    {
+      label: 'First',
+      path: 'https://picsum.photos/200/300',
+      class: 'initial',
+    },
+    {
+      label: 'Second',
+      path: 'https://picsum.photos/200/300',
+    },
+    {
+      label: 'Third',
+      path: 'https://picsum.photos/200/300',
+    },
+    {
+      label: 'Fourth',
+      path: 'https://picsum.photos/200/300',
+    },
+    {
+      label: 'Fifth',
+      path: 'https://picsum.photos/200/300',
+    },
+    {
+      label: 'Sixth',
+      path: 'https://picsum.photos/200/300',
+    },
+  ];
   constructor(
     private elementRef: ElementRef,
     @Inject(DOCUMENT) private _document: HTMLDocument
@@ -31,10 +58,10 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   }
   // Set event listeners
   setEventListeners() {
-    var next = document.getElementsByClassName('carousel__button--next')[0],
-      prev = document.getElementsByClassName('carousel__button--prev')[0];
-    next.addEventListener('click', this.moveNext);
-    prev.addEventListener('click', this.movePrev);
+    // var next = document.getElementsByClassName('carousel__button--next')[0],
+    //   prev = document.getElementsByClassName('carousel__button--prev')[0];
+    // next.addEventListener('click', this.moveNext);
+    // prev.addEventListener('click', this.movePrev);
   }
 
   moveNext() {
@@ -81,7 +108,7 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
     // Check if carousel is moving, if not, allow interaction
     if (!this.moving) {
       // temporarily disable interactivity
-      this.disableInteraction();
+      // this.disableInteraction();
       // Update the "old" adjacent slides with "new" ones
       let newPrevious = slide - 1,
         newNext = slide + 1,
