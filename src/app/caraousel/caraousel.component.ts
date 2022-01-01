@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
-import {Inject } from '@angular/core';
+import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -13,21 +13,21 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   totalItems;
   slide = 0;
   moving = true;
-  constructor(private elementRef: ElementRef,@Inject(DOCUMENT) private _document: HTMLDocument) {
-    console.log( this.elementRef.nativeElement.querySelectorAll('.carousel__photo'));
-    console.log(this._document.querySelector('.carousel'));
+  constructor(
+    private elementRef: ElementRef,
+    @Inject(DOCUMENT) private _document: HTMLDocument
+  ) {
+    console.log(this._document.querySelectorAll('.carousel').length);
   }
 
   setInitialClasses() {
     // Targets the previous, current, and next items
     // This assumes there are at least three items.
-    this.itemClassName = 'carousel__photo';
-    this.items = document.getElementsByClassName('itemClassName');
-    console.log(this.items);
-    this.totalItems = this.items.length;
-    this.items[this.totalItems - 1].classList.add('prev');
-    this.items[0].classList.add('active');
-    this.items[1].classList.add('next');
+    // this.itemClassName = 'carousel__photo';
+    // this.totalItems = this.items.length;
+    // this.items[this.totalItems - 1].classList.add('prev');
+    // this.items[0].classList.add('active');
+    // this.items[1].classList.add('next');
   }
   // Set event listeners
   setEventListeners() {
@@ -119,7 +119,7 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   }
 
   initCarousel() {
-    this.setInitialClasses();
+    //this.setInitialClasses();
     this.setEventListeners();
     // Set moving to false so that the carousel becomes interactive
     this.moving = false;
@@ -127,6 +127,12 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
   ngAfterViewInit(): void {
+    this.items =
+      this.elementRef.nativeElement.querySelectorAll('.carousel__photo');
+    this.totalItems = this.items.length;
+    this.items[this.totalItems - 1].classList.add('prev');
+    this.items[0].classList.add('active');
+    this.items[1].classList.add('next');
     this.initCarousel();
   }
 }
