@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HomeComponent } from './home.component';
+import { IvyCarouselModule } from "angular-responsive-carousel";
 
 @NgModule({
   declarations: [HomeComponent, OfferingsComponent],
