@@ -1,11 +1,38 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-caraousel',
   templateUrl: './caraousel.component.html',
   styleUrls: ['./caraousel.component.css'],
+  animations: [
+    // trigger('fade', [
+    //   transition('void => active', [
+    //     // using status here for transition
+    //     style({ opacity: 0 }),
+    //     animate(1000, style({ opacity: 1 })),
+    //   ]),
+    //   transition('* => void', [animate(1000, style({ opacity: 0 }))]),
+    // ]),
+    trigger('fade', [
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({ opacity: 1 })),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [style({ opacity: 0 }), animate(600)]),
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave', animate(600, style({ opacity: 0 }))),
+    ]),
+  ],
 })
 export class CaraouselComponent implements OnInit, AfterViewInit {
   itemClassName = 'carousel__photo';
@@ -13,31 +40,50 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   totalItems;
   slide = 0;
   moving = true;
+  startingSlide = 0;
+  endingSlide = 2;
   slides = [
     {
       label: 'First',
       path: 'https://picsum.photos/200/300',
-      class: 'initial',
+      class: 'caraousel-item initial',
+      isVisible: true,
+      data: '1',
     },
     {
       label: 'Second',
       path: 'https://picsum.photos/200/300',
+      class: 'caraousel-item',
+      isVisible: true,
+      data: '2',
     },
     {
       label: 'Third',
       path: 'https://picsum.photos/200/300',
+      class: 'caraousel-item',
+      isVisible: true,
+      data: '3',
     },
     {
       label: 'Fourth',
       path: 'https://picsum.photos/200/300',
+      class: 'caraousel-item',
+      isVisible: false,
+      data: '4',
     },
     {
       label: 'Fifth',
       path: 'https://picsum.photos/200/300',
+      class: 'caraousel-item',
+      isVisible: false,
+      data: '5',
     },
     {
       label: 'Sixth',
       path: 'https://picsum.photos/200/300',
+      class: 'caraousel-item',
+      isVisible: false,
+      data: '6',
     },
   ];
   constructor(
@@ -45,6 +91,34 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
     @Inject(DOCUMENT) private _document: HTMLDocument
   ) {
     console.log(this._document.querySelectorAll('.carousel').length);
+    this.totalItems = this.slides.length;
+  }
+
+  move() {
+    // if (this.endingSlide == this.slides.length - 1) this.endingSlide = 0;
+    // else {
+    //   this.startingSlide += 1;
+    //   this.endingSlide += 1;
+    // }
+
+    // this.slides.forEach((slide, ind) => {
+    //   if (ind >= this.startingSlide && ind <= this.endingSlide) {
+    //     slide.isVisible = true;
+    //   } else slide.isVisible = false;
+    // });
+
+    let tempSlide = this.slides.shift();
+    this.slides.push(tempSlide);
+    // let tempSlides=this.slides.map((slide)=>slide);
+    // this.slides=tempSlides
+    this.slides.forEach((slide, ind) => {
+      slide.isVisible = false;
+    });
+    setTimeout(() => {
+      this.slides[0].isVisible = true;
+      this.slides[1].isVisible = true;
+      this.slides[2].isVisible = true;
+    }, 100);
   }
 
   setInitialClasses() {
@@ -154,12 +228,12 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
   ngAfterViewInit(): void {
-    this.items =
-      this.elementRef.nativeElement.querySelectorAll('.carousel__photo');
-    this.totalItems = this.items.length;
-    this.items[this.totalItems - 1].classList.add('prev');
-    this.items[0].classList.add('active');
-    this.items[1].classList.add('next');
-    this.initCarousel();
+    // this.items =
+    //   this.elementRef.nativeElement.querySelectorAll('.carousel__photo');
+    // this.totalItems = this.items.length;
+    // this.items[this.totalItems - 1].classList.add('prev');
+    // this.items[0].classList.add('active');
+    // this.items[1].classList.add('next');
+    // this.initCarousel();
   }
 }
