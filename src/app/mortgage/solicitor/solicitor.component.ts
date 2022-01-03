@@ -13,19 +13,19 @@ export class SolicitorComponent implements OnInit {
   private otherOccupantForm: FormGroup;
   private solicitorForm: FormGroup;
   otherOccupant: FormControl;
-  santanderPanel: FormControl;
+  bankPanel: FormControl;
   withoutSolicitor: FormControl
   constructor(private router: Router, 
     private mortgageService:MortgageService
     ) { 
     this.otherOccupant=new FormControl('',[Validators.required])
-    this.santanderPanel=new FormControl('',[Validators.required])
+    this.bankPanel=new FormControl('',[Validators.required])
     this.withoutSolicitor=new FormControl('',[Validators.required])
     this.otherOccupantForm= new FormGroup({
       otherOccupant:this.otherOccupant
     })
     this.solicitorForm=new FormGroup({
-      santanderPanel:this.santanderPanel,
+      bankPanel:this.bankPanel,
       withoutSolicitor:this.withoutSolicitor
     })
   }
@@ -35,7 +35,7 @@ export class SolicitorComponent implements OnInit {
   }
 
   setSolicitorPanel(panel:string){
-    this.santanderPanel.setValue(panel)
+    this.bankPanel.setValue(panel)
   }
 
   setWithoutSolicitor(solicitor:string){

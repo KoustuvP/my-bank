@@ -18,9 +18,9 @@ import {
       transition('void => active', [
         // using status here for transition
         style({ opacity: 0 }),
-        animate(500, style({ opacity: 1 })),
+        animate(1000, style({ opacity: 1 })),
       ]),
-      transition('* => void', [animate(1000, style({ opacity: 0 }))]),
+      transition('* => void', [animate(300, style({ opacity: 0 }))]),
     ]),
   ],
 })
@@ -91,11 +91,6 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
     this.slides[0].isVisible = true;
     this.slides[1].isVisible = true;
     this.slides[2].isVisible = true;
-    // setTimeout(() => {
-    //   this.slides[0].isVisible = true;
-    //   this.slides[1].isVisible = true;
-    //   this.slides[2].isVisible = true;
-    // }, 1000);
   }
   moveNext() {
     let tempSlide = this.slides.shift();

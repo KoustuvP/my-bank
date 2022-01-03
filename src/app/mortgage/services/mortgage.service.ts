@@ -19,7 +19,7 @@ export class MortgageService {
   isPaymentDetailsAvailable = false;
   startFresh: boolean = false;
   otherOccupant = { otherOccupant: 'Yes' };
-  solicitorDetails = { santanderPanel: 'Yes', withoutSolicitor: 'No' };
+  solicitorDetails = { bankPanel: 'Yes', withoutSolicitor: 'No' };
   constructor(
     private http: HttpClient,
     private notificationService: NotificationService,
