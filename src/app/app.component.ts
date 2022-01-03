@@ -6,16 +6,16 @@ import { LoaderService } from './shared/services/loader.service';
 import { NotificationService } from './shared/services/notification.service';
 // import { Idle, DEFAULT_INTERRUPTSOURCES, createDefaultInterruptSources } from '@ng-idle/core';
 // import { Keepalive } from '@ng-idle/keepalive';
- 
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'santander-angular';
+  title = 'bank-angular';
   idleState = 'Not started.';
-  showTimeOut = false; 
+  showTimeOut = false;
   timedOut = false;
   lastPing?: Date;
   idleEndSubscription: any;
