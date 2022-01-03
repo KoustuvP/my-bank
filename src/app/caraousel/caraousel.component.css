@@ -13,11 +13,12 @@
   transform-style: preserve-3d;
 }
 
-/* .carousel-slides {
-  width: 33%;
+/* .carousel-slide {
+  
 } */
 .caraousel-item {
   padding: 5px;
+  min-width: 33%;
 }
 
 .example-card {

@@ -1,13 +1,17 @@
 <div class="carousel-wrapper">
   <div class="carousel" caraousel-config>
     <ng-container *ngFor="let slide of slides; let i = index">
-      <div @fade *ngIf="slide.isVisible" class="carousel__photo {{ slide.class }}">
+      <div
+        @fade
+        *ngIf="slide.isVisible"
+        class="carousel__slide {{ slide.class }}"
+      >
         <mat-card class="example-card">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>Shiba Inu({{ i }})</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-          </mat-card-header>{{slide.data}}
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle> </mat-card-header
+          >{{ slide.data }}
           <!-- <img mat-card-image [src]="slide.path" alt="Photo of a Shiba Inu" /> -->
           <mat-card-content>
             <p>
@@ -40,7 +44,7 @@
       mat-mini-fab
       color="warn"
       aria-label="Example icon button with a filter list icon"
-      (click)="move()"
+      (click)="moveNext()"
     >
       <mat-icon>filter_list</mat-icon>
     </button>
