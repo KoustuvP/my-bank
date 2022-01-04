@@ -1,28 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
   selector: 'app-caraousel',
   templateUrl: './caraousel.component.html',
   styleUrls: ['./caraousel.component.css'],
-  animations: [
-    trigger('fade', [
-      transition('void => active', [
-        // using status here for transition
-        style({ opacity: 0 }),
-        animate(1000, style({ opacity: 1 })),
-      ]),
-      transition('* => void', [animate(300, style({ opacity: 0 }))]),
-    ]),
-  ],
 })
 export class CaraouselComponent implements OnInit, AfterViewInit {
   itemClassName = 'carousel__photo';
@@ -30,50 +13,36 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
   totalItems;
   slide = 0;
   moving = true;
-  startingSlide = 0;
-  endingSlide = 2;
   slides = [
     {
       label: 'First',
       path: 'https://picsum.photos/200/300',
-      class: 'caraousel-item initial',
-      isVisible: true,
-      data: '1',
+      class: 'carousel__photo initial active',
     },
     {
       label: 'Second',
-      path: 'https://picsum.photos/200/300',
-      class: 'caraousel-item',
-      isVisible: true,
-      data: '2',
+      path: 'https://picsum.photos/200/301',
+      class: 'carousel__photo prev',
     },
     {
       label: 'Third',
-      path: 'https://picsum.photos/200/300',
-      class: 'caraousel-item',
-      isVisible: true,
-      data: '3',
+      path: 'https://picsum.photos/200/302',
+      class: 'carousel__photo next',
     },
     {
       label: 'Fourth',
-      path: 'https://picsum.photos/200/300',
-      class: 'caraousel-item',
-      isVisible: false,
-      data: '4',
+      path: 'https://picsum.photos/200/303',
+      class: 'carousel__photo',
     },
     {
       label: 'Fifth',
-      path: 'https://picsum.photos/200/300',
-      class: 'caraousel-item',
-      isVisible: false,
-      data: '5',
+      path: 'https://picsum.photos/200/304',
+      class: 'carousel__photo',
     },
     {
       label: 'Sixth',
-      path: 'https://picsum.photos/200/300',
-      class: 'caraousel-item',
-      isVisible: false,
-      data: '6',
+      path: 'https://picsum.photos/200/305',
+      class: 'carousel__photo',
     },
   ];
   constructor(
@@ -84,24 +53,50 @@ export class CaraouselComponent implements OnInit, AfterViewInit {
     this.totalItems = this.slides.length;
   }
 
-  move() {
-    this.slides.forEach((slide, ind) => {
-      slide.isVisible = false;
-    });
-    this.slides[0].isVisible = true;
-    this.slides[1].isVisible = true;
-    this.slides[2].isVisible = true;
-  }
   moveNext() {
-    let tempSlide = this.slides.shift();
-    this.slides.push(tempSlide);
-    this.move();
+    if (this.slide === this.totalItems - 1) {
+      this.slide = 0;
+    } else {
+      this.slide++;
+    }
+    this.moveCarouselTo(this.slide);
   }
 
   movePrev() {
-    let tempSlide = this.slides.pop();
-    this.slides.unshift(tempSlide);
-    this.move();
+    if (this.slide === 0) {
+      this.slide = this.totalItems - 1;
+    } else {
+      this.slide--;
+    }
+    this.moveCarouselTo(this.slide);
+  }
+
+  moveCarouselTo(slide) {
+    let newPrevious = slide - 1,
+      newNext = slide + 1,
+      oldPrevious = slide - 2,
+      oldNext = slide + 2;
+    if (this.totalItems - 1 > 3) {
+      if (newPrevious <= 0) {
+        oldPrevious = this.totalItems - 1;
+      } else if (newNext >= this.totalItems - 1) {
+        oldNext = 0;
+      }
+      if (slide === 0) {
+        newPrevious = this.totalItems - 1;
+        oldPrevious = this.totalItems - 2;
+        oldNext = slide + 1;
+      } else if (slide === this.totalItems - 1) {
+        newPrevious = slide - 1;
+        newNext = 0;
+        oldNext = 1;
+      }
+      this.slides[oldPrevious].class = this.itemClassName;
+      this.slides[oldNext].class = this.itemClassName;
+      this.slides[newPrevious].class = this.itemClassName + ' prev';
+      this.slides[slide].class = this.itemClassName + ' active';
+      this.slides[newNext].class = this.itemClassName + ' next';
+    }
   }
 
   ngOnInit() {}

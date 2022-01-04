@@ -1,52 +1,30 @@
 <div class="carousel-wrapper">
   <div class="carousel" caraousel-config>
-    <ng-container *ngFor="let slide of slides; let i = index">
-      <div
-        @fade
-        *ngIf="slide.isVisible"
-        class="carousel__slide {{ slide.class }}"
+    <img
+      *ngFor="let slide of slides"
+      [class]="slide.class"
+      [src]="slide.path"
+    />
+
+    <div class="carousel__button--next">
+      <button
+        mat-mini-fab
+        color="warn"
+        aria-label="Example icon button with a filter list icon"
+        (click)="moveNext()"
       >
-        <mat-card class="example-card">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu({{ i }})</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle> </mat-card-header
-          >{{ slide.data }}
-          <!-- <img mat-card-image [src]="slide.path" alt="Photo of a Shiba Inu" /> -->
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and distinct
-              spitz breeds of dog from Japan. A small, agile dog that copes very
-              well with mountainous terrain, the Shiba Inu was originally bred
-              for hunting.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </ng-container>
-  </div>
-  <div class="carousel__button--prev">
-    <button
-      mat-mini-fab
-      color="warn"
-      aria-label="Example icon button with a filter list icon"
-      (click)="movePrev()"
-    >
-      <mat-icon>filter_list</mat-icon>
-    </button>
-  </div>
-  <div class="carousel__button--next">
-    <button
-      mat-mini-fab
-      color="warn"
-      aria-label="Example icon button with a filter list icon"
-      (click)="moveNext()"
-    >
-      <mat-icon>filter_list</mat-icon>
-    </button>
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
+    <div class="carousel__button--prev">
+      <button
+        mat-mini-fab
+        color="warn"
+        aria-label="Example icon button with a filter list icon"
+        (click)="movePrev()"
+      >
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
